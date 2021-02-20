@@ -1,0 +1,806 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/19/2021 6:10:56 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-A5M2TND"
+  DTS:CreatorName="DESKTOP-A5M2TND\Andres"
+  DTS:DTSID="{C3E382C8-7B58-45A8-934F-8A152C64326A}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.152"
+  DTS:LocaleID="9226"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{B27777F9-C457-4C34-A270-ABED8FB6B204}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Administrador de conexiones con Excel]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{FCC8EC03-9A9A-419D-A7CA-AB1BBB15980A}"
+      DTS:ObjectName="Administrador de conexiones con Excel">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\Personal\Descargas\Prueba_cinte\Datos_Prueba_Cinte.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-A5M2TND.Test]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{04507976-BDF0-416D-840D-6A796C695801}"
+      DTS:ObjectName="DESKTOP-A5M2TND.Test">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-A5M2TND;Initial Catalog=Test;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\CARGA SQL_SERVER"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{55075C7E-2E2F-4360-9741-64543306D38E}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="CARGA SQL_SERVER"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\CARGA SQL_SERVER\Excel Source"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Excel Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">robos_bogota_2019$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\CARGA SQL_SERVER\Excel Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Administrador de conexiones con Excel]"
+                  connectionManagerRefId="Package.ConnectionManagers[Administrador de conexiones con Excel]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Documento]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].ExternalColumns[Documento]"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Documento]"
+                      name="Documento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Fecha]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].ExternalColumns[Fecha]"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Fecha]"
+                      name="Fecha"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Departamento]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].ExternalColumns[Departamento]"
+                      length="255"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Departamento]"
+                      name="Departamento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Municipio]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].ExternalColumns[Municipio]"
+                      length="255"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Municipio]"
+                      name="Municipio"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Dia]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].ExternalColumns[Dia]"
+                      length="255"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Dia]"
+                      name="Dia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Hora]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].ExternalColumns[Hora]"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Hora]"
+                      name="Hora"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Sitio]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].ExternalColumns[Sitio]"
+                      length="255"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Sitio]"
+                      name="Sitio"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Agresor]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].ExternalColumns[Agresor]"
+                      length="255"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Agresor]"
+                      name="Agresor"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Victima]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].ExternalColumns[Victima]"
+                      length="255"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Victima]"
+                      name="Victima"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Edad]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].ExternalColumns[Edad]"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Edad]"
+                      name="Edad"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Pais_nacimiento]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].ExternalColumns[Pais_nacimiento]"
+                      length="255"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Pais_nacimiento]"
+                      name="Pais_nacimiento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Clase_empleado]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].ExternalColumns[Clase_empleado]"
+                      length="255"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Clase_empleado]"
+                      name="Clase_empleado"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Profesion]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].ExternalColumns[Profesion]"
+                      length="255"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Profesion]"
+                      name="Profesion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Escolaridad]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].ExternalColumns[Escolaridad]"
+                      length="255"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Escolaridad]"
+                      name="Escolaridad"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Codigo_DANE]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].ExternalColumns[Codigo_DANE]"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Codigo_DANE]"
+                      name="Codigo_DANE"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].ExternalColumns[Documento]"
+                      dataType="r8"
+                      name="Documento" />
+                    <externalMetadataColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].ExternalColumns[Fecha]"
+                      dataType="date"
+                      name="Fecha" />
+                    <externalMetadataColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].ExternalColumns[Departamento]"
+                      dataType="wstr"
+                      length="255"
+                      name="Departamento" />
+                    <externalMetadataColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].ExternalColumns[Municipio]"
+                      dataType="wstr"
+                      length="255"
+                      name="Municipio" />
+                    <externalMetadataColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].ExternalColumns[Dia]"
+                      dataType="wstr"
+                      length="255"
+                      name="Dia" />
+                    <externalMetadataColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].ExternalColumns[Hora]"
+                      dataType="date"
+                      name="Hora" />
+                    <externalMetadataColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].ExternalColumns[Sitio]"
+                      dataType="wstr"
+                      length="255"
+                      name="Sitio" />
+                    <externalMetadataColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].ExternalColumns[Agresor]"
+                      dataType="wstr"
+                      length="255"
+                      name="Agresor" />
+                    <externalMetadataColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].ExternalColumns[Victima]"
+                      dataType="wstr"
+                      length="255"
+                      name="Victima" />
+                    <externalMetadataColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].ExternalColumns[Edad]"
+                      dataType="r8"
+                      name="Edad" />
+                    <externalMetadataColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].ExternalColumns[Pais_nacimiento]"
+                      dataType="wstr"
+                      length="255"
+                      name="Pais_nacimiento" />
+                    <externalMetadataColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].ExternalColumns[Clase_empleado]"
+                      dataType="wstr"
+                      length="255"
+                      name="Clase_empleado" />
+                    <externalMetadataColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].ExternalColumns[Profesion]"
+                      dataType="wstr"
+                      length="255"
+                      name="Profesion" />
+                    <externalMetadataColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].ExternalColumns[Escolaridad]"
+                      dataType="wstr"
+                      length="255"
+                      name="Escolaridad" />
+                    <externalMetadataColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].ExternalColumns[Codigo_DANE]"
+                      dataType="r8"
+                      name="Codigo_DANE" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Error Output].Columns[Documento]"
+                      dataType="r8"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Error Output].Columns[Documento]"
+                      name="Documento" />
+                    <outputColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Error Output].Columns[Fecha]"
+                      dataType="date"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Error Output].Columns[Fecha]"
+                      name="Fecha" />
+                    <outputColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Error Output].Columns[Departamento]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Error Output].Columns[Departamento]"
+                      name="Departamento" />
+                    <outputColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Error Output].Columns[Municipio]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Error Output].Columns[Municipio]"
+                      name="Municipio" />
+                    <outputColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Error Output].Columns[Dia]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Error Output].Columns[Dia]"
+                      name="Dia" />
+                    <outputColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Error Output].Columns[Hora]"
+                      dataType="date"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Error Output].Columns[Hora]"
+                      name="Hora" />
+                    <outputColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Error Output].Columns[Sitio]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Error Output].Columns[Sitio]"
+                      name="Sitio" />
+                    <outputColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Error Output].Columns[Agresor]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Error Output].Columns[Agresor]"
+                      name="Agresor" />
+                    <outputColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Error Output].Columns[Victima]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Error Output].Columns[Victima]"
+                      name="Victima" />
+                    <outputColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Error Output].Columns[Edad]"
+                      dataType="r8"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Error Output].Columns[Edad]"
+                      name="Edad" />
+                    <outputColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Error Output].Columns[Pais_nacimiento]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Error Output].Columns[Pais_nacimiento]"
+                      name="Pais_nacimiento" />
+                    <outputColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Error Output].Columns[Clase_empleado]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Error Output].Columns[Clase_empleado]"
+                      name="Clase_empleado" />
+                    <outputColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Error Output].Columns[Profesion]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Error Output].Columns[Profesion]"
+                      name="Profesion" />
+                    <outputColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Error Output].Columns[Escolaridad]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Error Output].Columns[Escolaridad]"
+                      name="Escolaridad" />
+                    <outputColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Error Output].Columns[Codigo_DANE]"
+                      dataType="r8"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Error Output].Columns[Codigo_DANE]"
+                      name="Codigo_DANE" />
+                    <outputColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\CARGA SQL_SERVER\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[ROBOS_BOGOTA]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\CARGA SQL_SERVER\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-A5M2TND.Test]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-A5M2TND.Test]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Documento]"
+                      cachedDataType="r8"
+                      cachedName="Documento"
+                      externalMetadataColumnId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DOCUMENTO]"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Documento]" />
+                    <inputColumn
+                      refId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Fecha]"
+                      cachedDataType="date"
+                      cachedName="Fecha"
+                      externalMetadataColumnId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FECHA]"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Fecha]" />
+                    <inputColumn
+                      refId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Departamento]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Departamento"
+                      externalMetadataColumnId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DEPARTAMENTO]"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Departamento]" />
+                    <inputColumn
+                      refId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Municipio]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Municipio"
+                      externalMetadataColumnId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MUNICIPIO]"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Municipio]" />
+                    <inputColumn
+                      refId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Dia]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Dia"
+                      externalMetadataColumnId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DIA]"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Dia]" />
+                    <inputColumn
+                      refId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Hora]"
+                      cachedDataType="date"
+                      cachedName="Hora"
+                      externalMetadataColumnId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HORA]"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Hora]" />
+                    <inputColumn
+                      refId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Sitio]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Sitio"
+                      externalMetadataColumnId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SITIO]"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Sitio]" />
+                    <inputColumn
+                      refId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Agresor]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Agresor"
+                      externalMetadataColumnId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AGRESOR]"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Agresor]" />
+                    <inputColumn
+                      refId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Victima]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Victima"
+                      externalMetadataColumnId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VICTIMA]"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Victima]" />
+                    <inputColumn
+                      refId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Edad]"
+                      cachedDataType="r8"
+                      cachedName="Edad"
+                      externalMetadataColumnId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EDAD]"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Edad]" />
+                    <inputColumn
+                      refId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Pais_nacimiento]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Pais_nacimiento"
+                      externalMetadataColumnId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PAIS_NACIMIENTO]"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Pais_nacimiento]" />
+                    <inputColumn
+                      refId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Clase_empleado]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Clase_empleado"
+                      externalMetadataColumnId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CLASE_EMPLEADO]"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Clase_empleado]" />
+                    <inputColumn
+                      refId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Profesion]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Profesion"
+                      externalMetadataColumnId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PROFESION]"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Profesion]" />
+                    <inputColumn
+                      refId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Escolaridad]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Escolaridad"
+                      externalMetadataColumnId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ESCOLARIDAD]"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Escolaridad]" />
+                    <inputColumn
+                      refId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Codigo_DANE]"
+                      cachedDataType="r8"
+                      cachedName="Codigo_DANE"
+                      externalMetadataColumnId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CODIGO_DANE]"
+                      lineageId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output].Columns[Codigo_DANE]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DOCUMENTO]"
+                      dataType="i8"
+                      name="DOCUMENTO" />
+                    <externalMetadataColumn
+                      refId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FECHA]"
+                      dataType="dbDate"
+                      name="FECHA" />
+                    <externalMetadataColumn
+                      refId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DEPARTAMENTO]"
+                      dataType="wstr"
+                      length="20"
+                      name="DEPARTAMENTO" />
+                    <externalMetadataColumn
+                      refId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MUNICIPIO]"
+                      dataType="wstr"
+                      length="20"
+                      name="MUNICIPIO" />
+                    <externalMetadataColumn
+                      refId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DIA]"
+                      dataType="wstr"
+                      length="10"
+                      name="DIA" />
+                    <externalMetadataColumn
+                      refId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HORA]"
+                      dataType="dbDate"
+                      name="HORA" />
+                    <externalMetadataColumn
+                      refId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SITIO]"
+                      dataType="wstr"
+                      length="50"
+                      name="SITIO" />
+                    <externalMetadataColumn
+                      refId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AGRESOR]"
+                      dataType="wstr"
+                      length="25"
+                      name="AGRESOR" />
+                    <externalMetadataColumn
+                      refId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VICTIMA]"
+                      dataType="wstr"
+                      length="25"
+                      name="VICTIMA" />
+                    <externalMetadataColumn
+                      refId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EDAD]"
+                      dataType="i4"
+                      name="EDAD" />
+                    <externalMetadataColumn
+                      refId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PAIS_NACIMIENTO]"
+                      dataType="wstr"
+                      length="10"
+                      name="PAIS_NACIMIENTO" />
+                    <externalMetadataColumn
+                      refId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CLASE_EMPLEADO]"
+                      dataType="wstr"
+                      length="20"
+                      name="CLASE_EMPLEADO" />
+                    <externalMetadataColumn
+                      refId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PROFESION]"
+                      dataType="wstr"
+                      length="75"
+                      name="PROFESION" />
+                    <externalMetadataColumn
+                      refId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ESCOLARIDAD]"
+                      dataType="wstr"
+                      length="15"
+                      name="ESCOLARIDAD" />
+                    <externalMetadataColumn
+                      refId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CODIGO_DANE]"
+                      dataType="wstr"
+                      length="10"
+                      name="CODIGO_DANE" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\CARGA SQL_SERVER\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CARGA SQL_SERVER\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\CARGA SQL_SERVER\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\CARGA SQL_SERVER\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\CARGA SQL_SERVER\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\CARGA SQL_SERVER.Paths[Excel Source Output]"
+              endId="Package\CARGA SQL_SERVER\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Excel Source Output"
+              startId="Package\CARGA SQL_SERVER\Excel Source.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="194,42"
+          Id="Package\CARGA SQL_SERVER"
+          TopLeft="207,94" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\CARGA SQL_SERVER">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="144,42"
+          Id="Package\CARGA SQL_SERVER\Excel Source"
+          TopLeft="148,127" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\CARGA SQL_SERVER\OLE DB Destination"
+          TopLeft="130,222" />
+        <EdgeLayout
+          Id="Package\CARGA SQL_SERVER.Paths[Excel Source Output]"
+          TopLeft="219.25,169">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,53"
+              Start="0,0"
+              End="0,45.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\CARGA SQL_SERVER\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\CARGA SQL_SERVER\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

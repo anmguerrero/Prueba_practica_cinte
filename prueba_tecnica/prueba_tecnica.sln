@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "prueba_tecnica", "prueba_tecnica.dtproj", "{0E50A925-73FA-4045-8C33-0B66DB1C6944}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Azure|Default = Azure|Default
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0E50A925-73FA-4045-8C33-0B66DB1C6944}.Azure|Default.ActiveCfg = Azure
+		{0E50A925-73FA-4045-8C33-0B66DB1C6944}.Azure|Default.Build.0 = Azure
+		{0E50A925-73FA-4045-8C33-0B66DB1C6944}.Development|Default.ActiveCfg = Development
+		{0E50A925-73FA-4045-8C33-0B66DB1C6944}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B0E46CB6-7CA9-4872-A00A-340A3BD74B75}
+	EndGlobalSection
+EndGlobal
